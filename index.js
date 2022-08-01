@@ -11,14 +11,15 @@ app.engine('hbs', handlebars.engine({
     extname: 'hbs'
 }));
 
-app.get('/test', (req, res) => res.render('test')); // ieskos test failiuko
-app.get('/test2', (req, res) => res.render('test2')); // ieskos test failiuko
+//app.get('/test', (req, res) => res.render('test')); // ieskos test failiuko
+//app.get('/test2', (req, res) => res.render('test2')); // ieskos test failiuko
 
-
+app.get('/'), (req, test) => res.rendes('index');
 
 
 
 //kuriam router, t.y. koks bus narsykles adresas
-app.get('/', (req, res) => res.send('Hello World'));
+//app.get('/', (req, res) => res.send('Hello World'));
+
 
 app.listen(port, () => console.log(`Starting server on port ${port}`));
