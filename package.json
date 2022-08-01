@@ -1,16 +1,18 @@
 {
-  "name": "40-gr-todo-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Tatjana",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.1",
-    "express-handlebars": "^6.0.6",
-    "nodemon": "^2.0.19"
-  }
+    "name": "40-gr-todo-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "npx nodemon -e hbs,css,js"
+    },
+    "author": "Tatjana",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.1",
+        "express-handlebars": "^6.0.6",
+        "nodemon": "^2.0.19"
+    }
 }
