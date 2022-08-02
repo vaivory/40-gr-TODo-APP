@@ -1,5 +1,6 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
+import mysql from 'mysql2';
 //kursim aplikacija
 
 const app = express();
@@ -16,7 +17,22 @@ app.engine('hbs', handlebars.engine({
 
 app.get('/'), (req, test) => res.rendes('index');
 
+//const arr = ['Foo', 'Bar', 'Baz'];
+// DB start
+const connection = mysql.createConnection({  //per sita connection objekta galesim daryti uzklausas
+    host: 'localhost',  //jei tas pats PC tai local host ,je ikitas tai IP adresas
+    database: 'classicmodels',
+    user: 'classicmodels',
+    password: 'bit'
 
+})
+app.get('/db', (req, res) => {
+    connection.execute('SELECT productLine, textDescription FROM productlines', (err, rows) => {
+        const data = rows.map(row => row);
+        res.render('db', { data: data });
+    });
+}); // i musu template mes paduodam musu masyva
+// DB end
 
 //kuriam router, t.y. koks bus narsykles adresas
 //app.get('/', (req, res) => res.send('Hello World'));
