@@ -26,13 +26,35 @@ const connection = mysql.createConnection({  //per sita connection objekta gales
     password: 'bit'
 
 })
-app.get('/db', (req, res) => {
-    connection.execute('SELECT productLine, textDescription FROM productlines', (err, rows) => {
-        const data = rows.map(row => row);
-        res.render('db', { data: data });
-    });
-}); // i musu template mes paduodam musu masyva
+// app.get('/db', (req, res) => {
+//     connection.execute('SELECT productLine, textDescription FROM productlines', (err, rows) => {
+//         const data = rows.map(row => row);
+//         res.render('db', { data: data });
+//     });
+// }); // i musu template mes paduodam musu masyva
+
+app.get('/db', renderAsync('db', getProductLines));
+
+async function getProductLines() {
+    return await dbQuery(
+        connection,
+        'SELECT productLine, textDescription FROM productlines',
+        [])
+}
 // DB end
+
+async function dbQuery(connection, query, params) {
+    return await new Promise((resolve, reject) => {
+        connection.execute(query, params, (err, rows) => {
+            if (err) return reject(err);
+            resolve(rows);
+        })
+    })
+}
+
+function renderAsync(view, asyncFunction) { //model yra patys duomenys kurie pareina i view
+    return (req, res) => asyncFunction(req).then(data => res.render(view, { data: data }));
+}
 
 //kuriam router, t.y. koks bus narsykles adresas
 //app.get('/', (req, res) => res.send('Hello World'));
