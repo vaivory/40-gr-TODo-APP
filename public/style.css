@@ -174,7 +174,7 @@ main {
     padding: 0.3em;
     border-radius: 50px;}
 
-    .note-text[contentEditable="true"] {
+    .note-edit {
         color: red;
     }
 
