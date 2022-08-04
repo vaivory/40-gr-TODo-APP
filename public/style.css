@@ -156,3 +156,28 @@ main {
 .task .actions .delete {
     color: crimson;
 }
+.note {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.note>.buttons {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+.note>.buttons .fa-pen {
+    background-color: #ddf;
+    color:green;
+    font-size: 0.7em;
+    padding: 0.3em;
+    border-radius: 50px;}
+
+    .note-text[contentEditable="true"] {
+        color: red;
+    }
+
+    .hidden {
+        display: none !important;
+    }
