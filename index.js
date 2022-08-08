@@ -1,7 +1,8 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
-import mysql from 'mysql2';
-import { renderMainPage, insertNewNote, deleteNote, editNote } from './lib/mainPage.js';
+//import mysql from 'mysql2';
+//import { renderMainPage, insertNewNote, deleteNote, editNote } from './src/routes.js';
+import { getNotes, addNote, deleteNote, updateNote } from './src/routes.js';
 //kursim aplikacija
 
 const app = express();
@@ -66,9 +67,12 @@ app.engine('hbs', handlebars.engine({
 //app.get('/', (req, res) => res.send('Hello World'));
 //app.get('/db', renderAsync('db', getProductLines));
 
-app.get('/', renderMainPage);
-app.post('/', insertNewNote);
+// app.get('/', renderMainPage);
+// app.post('/', insertNewNote);
+app.get('/', getNotes);
+app.post('/', addNote);
 app.delete('/', deleteNote);
-app.patch('/', editNote);
+//app.patch('/', editNote);
+app.patch('/', updateNote);
 
 app.listen(port, () => console.log(`Starting server on port ${port}`));

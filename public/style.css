@@ -181,3 +181,32 @@ main {
     .hidden {
         display: none !important;
     }
+
+    .note.style-1 {
+        /*Raudonas stilius*/
+        background-color: #f33;
+        color: #253535;
+        box-shadow: #b88 0 0 4px 1px;
+    }
+
+    note.style-1 .note-priority {
+        color: #ddf
+    }
+
+    .note.style-2 {
+        /*geltonas*/
+        background-color: #bb6;
+        color: #253535;
+        box-shadow: #b88 0 0 4px 1px;
+    }
+
+    .note.style-3 {
+        /*zalias*/
+        background-color: #696;
+        color: #253535;
+        box-shadow: #b88 0 0 4px 1px;
+    }
+
+    note.style-1 .note-priority {
+        color: #ddf
+    }
