@@ -1,20 +1,24 @@
 {{#with model}}
-<h1>{{model.title}}</h1>
+<div id="title-container">
+    <h1>
+        {{title}}
+    </h1>
+</div>
 <main>
     <form id="note-input" method="post">
         <input type="text" name="note" placeholder="Enter a new note here!" />
         <input type="number" name="priority" placeholder="Priority" />
         <select name="style">
-        <option value="0">Default</option>>
-        <option value="1">Red</option>>
-        <option value="2">Geltonas</option>>
-        <option value="3">Zalias</option>>
+            <option value="0">Default</option>>
+            <option value="1">Red</option>>
+            <option value="2">Geltonas</option>>
+            <option value="3">Zalias</option>>
         </select>
         <button type="submit">Save</button>
     </form>
     <section>
         {{#each notes}}
-        <div class="note {{#if this.style}}style-{{this.style}}{{/if}}" >
+        <div class="note {{#if this.style}}style-{{this.style}}{{/if}}">
 
             <span class="note-text">{{this.note}}</span>
             <span class="note-priority">Priority: {{this.priority}}</span>

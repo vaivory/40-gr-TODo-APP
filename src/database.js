@@ -9,10 +9,30 @@ export async function selectNotes(connection) {
     });
 }
 
+
 export async function insertNote(connection, note, priority) {
     return await new Promise((resolve, reject) => {
         connection.execute('INSERT notes(note, priority) VALUES(?, ?)', [note, priority], (err, _) => {
             if (err) return reject(err);
+            resolve();
+        });
+    });
+}
+
+export async function lastInsertRow(connection) {
+    return await new Promise((resolve, reject) => {
+        connection.execute('SELECT id FROM last_insert_row;', (err, result) => {
+            if(err) return reject(err);
+            console.log('lastInsertRow');
+            resolve(result[0].id);
+        });
+    });
+}
+
+export async function insertStyle(connection, noteId, style) {
+    return await new Promise((resolve, reject) => {
+        connection.execute('INSERT note_style(noteId, style) VALUES(?, ?)', [noteId, style], (err, result) => {
+            if(err) return reject(err);
             resolve();
         });
     });
